@@ -68,11 +68,17 @@ public protocol MustacheBoxable {
     var mustacheBox: MustacheBox { get }
 }
 
-@objc extension MustacheBox {
+extension MustacheBoxable {
+    public var mustacheBox: MustacheBox {
+        return MustacheBox(value: self)
+    }
+}
+
+extension MustacheBox: MustacheBoxable {
     
     /// `MustacheBox` adopts the `MustacheBoxable` protocol so that it can feed
     /// Mustache templates. Its mustacheBox property returns itself.
-    @objc public override var mustacheBox: MustacheBox {
+    public var mustacheBox: MustacheBox {
         return self
     }
 }
@@ -225,7 +231,7 @@ public func Box(_ value: Any?) -> MustacheBox {
     case let f as KeyedSubscriptFunction:
         return MustacheBox(keyedSubscript: f)
     default:
-        NSLog("%@", "Mustache warning: \(String(reflecting: value)) of type \(type(of: value)) is not MustacheBoxable, Array, Set, Dictionary, and is discarded.")
+        MustacheLogger("Mustache warning: \(String(reflecting: value)) of type \(type(of: value)) is not MustacheBoxable, Array, Set, Dictionary, and is discarded.")
         return EmptyBox
     }
 }
@@ -405,7 +411,7 @@ extension MustacheBox {
                     if let key = key as? String {
                         boxDictionary[key] = Box(value)
                     } else {
-                        NSLog("Mustache: non-string key in dictionary (\(key)) is discarded.")
+                        MustacheLogger("Mustache: non-string key in dictionary (\(key)) is discarded.")
                     }
                 }
                 return boxDictionary

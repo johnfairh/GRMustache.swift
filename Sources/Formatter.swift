@@ -25,7 +25,7 @@ import Foundation
 
 
 /// Formatter can format template values.
-@objc extension Formatter {
+extension Formatter: MustacheBoxable {
     
     /// Formatter adopts the `MustacheBoxable` protocol so that it can feed
     /// Mustache templates.
@@ -75,7 +75,7 @@ import Foundation
     /// Typically, `NumberFormatter` only formats numbers, and `DateFormatter`,
     /// dates: you can safely mix various data types in a section controlled by
     /// those well-behaved formatters.
-    @objc open override var mustacheBox: MustacheBox {
+    public var mustacheBox: MustacheBox {
         // Return a multi-facetted box, because NSFormatter interacts in
         // various ways with Mustache rendering.
         
@@ -119,7 +119,7 @@ import Foundation
                     // So nil result means that object is not of the correct class. Leave
                     // it untouched.
                     
-                    if let formatted = self.string(for: box.value) {
+                    if let value = box.value, let formatted = self.string(for: value) {
                         return formatted
                     } else {
                         return box

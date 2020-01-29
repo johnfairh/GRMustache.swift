@@ -21,6 +21,14 @@
 // THE SOFTWARE.
 import Foundation
 
+
+// JF: Turning this off for non-Darwin.
+// JF: Localized Strings are approximately broken elsewhere and the CVarArgs
+// JF: `String` initializer in the pyramid method needs replacing with something
+// JF: Swift-native.
+
+#if os(iOS) || os(macOS) || os(tvOS) || os(watchOS)
+
 extension StandardLibrary {
     
     /// StandardLibrary.Localizer provides localization of Mustache sections
@@ -280,3 +288,5 @@ extension StandardLibrary {
     }
 
 }
+
+#endif

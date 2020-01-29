@@ -48,12 +48,12 @@ extension StandardLibrary {
         /// Creates a Logger.
         /// 
         /// - parameter log: A closure that takes a String. Default one logs that
-        ///   string with NSLog().
+        ///   string with `MustacheLogger`.
         public init(_ log: ((String) -> Void)? = nil) {
             if let log = log {
                 self.log = log
             } else {
-                self.log = { NSLog($0) }
+                self.log = { MustacheLogger($0) }
             }
         }
         
@@ -88,4 +88,13 @@ extension StandardLibrary {
         fileprivate let log: (String) -> Void
         fileprivate var indentationLevel: Int = 0
     }
+}
+
+// JF: avoid NSLog and make hookable for embedding purposes
+
+/// Overrideable logging.  Used rarely during normal running to indicate something is
+/// probably wrong with a template or the data fed to it.  Used by `StandardLibrary.Logger`
+/// to log things.
+public var MustacheLogger: (String) -> Void = { string in
+    fputs(string, stderr)
 }
