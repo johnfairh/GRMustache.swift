@@ -1,5 +1,16 @@
-GRMustache.swift [![Swift](https://img.shields.io/badge/swift-5-orange.svg?style=flat)](https://developer.apple.com/swift/) [![Platforms](https://img.shields.io/cocoapods/p/GRMustache.swift.svg)](https://developer.apple.com/swift/) [![License](https://img.shields.io/github/license/groue/GRMustache.swift.svg?maxAge=2592000)](/LICENSE)
-================
+This is a fork of GRMustache.swift that builds and runs a subset of the
+upstream package on Linux with Swift PM 5.1.  The missing pieces are to do
+with general `NSObject` support -- see commit history for more notes.
+
+These missing pieces have been brutally chopped out because I don't need them,
+and I'm relying on the upstream test suite!  Buyer beware.
+
+Version tags are 10 major versions ahead of upstream:
+
+* 14.0.1  =  Upstream 4.0.1 + Linux hacks
+
+---
+# GRMustache.swift [![Swift](https://img.shields.io/badge/swift-5-orange.svg?style=flat)](https://developer.apple.com/swift/) [![Platforms](https://img.shields.io/cocoapods/p/GRMustache.swift.svg)](https://developer.apple.com/swift/) [![License](https://img.shields.io/github/license/groue/GRMustache.swift.svg?maxAge=2592000)](/LICENSE)
 
 ### Mustache templates for Swift
 
