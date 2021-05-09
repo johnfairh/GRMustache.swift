@@ -8,6 +8,7 @@ and I'm relying on the upstream test suite!  Buyer beware.
 Version tags are 10 major versions ahead of upstream:
 
 * 14.0.1  =  Upstream 4.0.1 + Linux hacks
+* 14.0.2  =  14.0.1 plus Swift 5.4 warning fixes
 
 ---
 # GRMustache.swift [![Swift](https://img.shields.io/badge/swift-5-orange.svg?style=flat)](https://developer.apple.com/swift/) [![Platforms](https://img.shields.io/cocoapods/p/GRMustache.swift.svg)](https://developer.apple.com/swift/) [![License](https://img.shields.io/github/license/groue/GRMustache.swift.svg?maxAge=2592000)](/LICENSE)
