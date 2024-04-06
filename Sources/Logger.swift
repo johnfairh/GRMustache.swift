@@ -95,6 +95,6 @@ extension StandardLibrary {
 /// Overrideable logging.  Used rarely during normal running to indicate something is
 /// probably wrong with a template or the data fed to it.  Used by `StandardLibrary.Logger`
 /// to log things.
-public var MustacheLogger: (String) -> Void = { string in
+public nonisolated(unsafe) var MustacheLogger: (String) -> Void = { string in
     fputs(string, stderr)
 }
